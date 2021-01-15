@@ -18,4 +18,4 @@
 Couple of buttons created using <a href="https://github.com/youwol/flux-view">flux-view</a>.
 
 Examples are provided in
- <a href='https://codesandbox.io/s/github/youwol/fb-button/blob/master/src/demos/showcase?file=/index.html'>code sandbox</a>
+ <a href='https://codesandbox.io/s/github/youwol/fv-button/blob/master/src/demos/showcase?file=/index.html'>code sandbox</a>
