@@ -1,6 +1,6 @@
 import { attr$, child$, render } from "@youwol/flux-view"
 import { interval } from "rxjs"
-import { Button } from "src/lib/button.view"
+import { Button } from "../lib/button.view"
 
 
 
@@ -27,7 +27,7 @@ test('button with className attr$', () => {
         class: 'd-flex align-items-center',
         children:[
             { innerText: 'The button:'},
-            new Button.View({contentView: () => ({innerText:'click'}), className: () => class$ })
+            new Button.View({contentView: () => ({innerText:'click'}), class: class$ } as any)
         ]
     }
     let div = render(vDom)

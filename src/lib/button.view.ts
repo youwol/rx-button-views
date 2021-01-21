@@ -16,9 +16,8 @@ export namespace Button {
     export class View implements VirtualDOM {
 
         static defaultClass = "fv-btn fv-btn-primary"
+        public readonly class : string
         public readonly state : State
-        public readonly className : string | Stream$<unknown, string>
-        public readonly style : Object | Stream$<unknown, Object>
         public readonly tag = 'button'
         public readonly type = 'button'
         public readonly children : [VirtualDOM | Stream$<unknown, VirtualDOM> ]
@@ -27,22 +26,20 @@ export namespace Button {
         constructor(
                 {   
                     state,
-                    className,
-                    style,
                     contentView,
                     ...rest
                 } :
                 {   
                     state?: State,
-                    className?:  (State) => string | Stream$<unknown, string>,
-                    style?:  (State) => { [key:string]:string } | Stream$<unknown, {[key:string]:string}>,
                     contentView: (State) => VirtualDOM | Stream$<unknown, VirtualDOM>
                 }) {
             
             Object.assign(this, rest)
+
+            if( !(rest['className'] || rest['class'])) 
+                this.class = View.defaultClass
+
             this.state = state || new State()
-            this.className = className ? className(this.state) : View.defaultClass
-            this.style = style ? style(this.state) : {}
             this.children = [contentView(this.state)]
             this.onclick = (ev) => this.state.click$.next(ev)
         }
