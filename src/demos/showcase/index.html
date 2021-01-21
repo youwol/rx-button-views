@@ -1,10 +1,8 @@
 <html>
     <head>
         <script src="https://unpkg.com/rxjs@6/bundles/rxjs.umd.min.js"></script>
-        
         <script src="https://unpkg.com/@youwol/flux-view@0.0.4/dist/@youwol/flux-view.js"></script>
-        <script src="https://unpkg.com/@youwol/fv-button@0.0.0/dist/@youwol/fv-button.js"></script>
-        
+        <script src="https://unpkg.com/@youwol/fv-button@0.0.1/dist/@youwol/fv-button.js"></script>
         <!--
         <script src="../../../../../flux-view/dist/@youwol/flux-view.js"></script>
         <script src="../../../dist/@youwol/fv-button.js"></script>
@@ -51,7 +49,7 @@
             }
             let vDom = new btns.Button.View({
                 contentView: () => customContent , 
-                className: () => 'fv-btn fv-btn-secondary'
+                class: 'fv-btn fv-btn-secondary'
             })
             let div = flux.render(vDom)
             document.getElementById("container").appendChild(div)
@@ -63,7 +61,7 @@
             
             vDom = new btns.Button.View({
                 contentView: ()=> ({innerText:'some reactivity'}) , 
-                className: () => flux.attr$( 
+                class: flux.attr$( 
                     rxjs.interval(2000), 
                     (n) => n%2 ? 'fv-btn-primary' : 'fv-btn-secondary', 
                     { 
@@ -117,8 +115,8 @@
             let stateToggle = new ToggleState(toggled$)
             vDom = new btns.Button.View({
                 state:stateToggle, 
-                className: (state) => flux.attr$( 
-                    state.toggled$, 
+                class: flux.attr$( 
+                    stateToggle.toggled$, 
                     (t) => t ? 'fv-btn-primary' : 'fv-btn-secondary' , 
                     { wrapper: (d)=> `fv-btn ${d}` }
                 ),
