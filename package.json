@@ -28,7 +28,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-        "@youwol/flux-view": "0.x",
+        "@youwol/flux-view": "^0.0.11",
         "rxjs": "6.x"
     },
     "devDependencies": {
