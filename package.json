@@ -1,7 +1,7 @@
 {
     "name": "@youwol/fv-button",
     "description": "Button's type of widgets using flux-view.",
-    "version": "0.0.5-wip",
+    "version": "0.1.0",
     "author": "greinisch@youwol.com",
     "homepage": "https://github.com/youwol/fv-button#README.md",
     "main": "dist/@youwol/fv-button.js",
