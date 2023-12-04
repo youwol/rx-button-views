@@ -2,20 +2,6 @@ import { ChildLike, render, VirtualDOM } from '@youwol/rx-vdom'
 import { interval } from 'rxjs'
 import { Button } from '../lib/button.view'
 
-/*
-test('simplest button', () => {
-
-    let vDom = {
-        class: 'd-flex align-items-center',
-        children:[
-            { innerText: 'The button:'},
-            new Button.View('click')
-        ]
-    }
-    let div = render(vDom)
-    
-})
-*/
 test('button with className attr$', () => {
     const timer$ = interval(1000)
 
@@ -35,6 +21,11 @@ test('button with className attr$', () => {
         ],
     }
     const div = render(vDom)
+    document.body.appendChild(div)
+
+    // TODO
+    const button = document.querySelector('button')
+    expect(button).toBeTruthy()
 })
 
 test('button with custom contentView$', () => {
@@ -57,4 +48,9 @@ test('button with custom contentView$', () => {
         ],
     }
     const div = render(vDom)
+    document.body.appendChild(div)
+
+    // TODO
+    const button = document.querySelector('button')
+    expect(button).toBeTruthy()
 })
