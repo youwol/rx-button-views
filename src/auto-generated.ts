@@ -48,17 +48,17 @@ const mainEntry : {entryFile: string,loadDependencies:string[]} = {
 const secondaryEntries : {[k:string]:{entryFile: string, name: string, loadDependencies:string[]}}= {}
 
 const entries = {
-     '@youwol/fv-button': './index.ts',
-    ...Object.values(secondaryEntries).reduce( (acc,e) => ({...acc, [`@youwol/fv-button/${e.name}`]:e.entryFile}), {})
+     '@youwol/rx-button-views': './index.ts',
+    ...Object.values(secondaryEntries).reduce( (acc,e) => ({...acc, [`@youwol/rx-button-views/${e.name}`]:e.entryFile}), {})
 }
 export const setup = {
-    name:'@youwol/fv-button',
-        assetId:'QHlvdXdvbC9mdi1idXR0b24=',
+    name:'@youwol/rx-button-views',
+        assetId:'QHlvdXdvbC9yeC1idXR0b24tdmlld3M=',
     version:'0.2.0-wip',
-    shortDescription:"Button's type of widgets using flux-view.",
-    developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/fv-button&tab=doc',
-    npmPackage:'https://www.npmjs.com/package/@youwol/fv-button',
-    sourceGithub:'https://github.com/youwol/fv-button',
+    shortDescription:"Button's type of widgets using rx-vdom.",
+    developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/rx-button-views&tab=doc',
+    npmPackage:'https://www.npmjs.com/package/@youwol/rx-button-views',
+    sourceGithub:'https://github.com/youwol/rx-button-views',
     userGuide:'',
     apiVersion:'02',
     runTimeDependencies,
@@ -85,7 +85,7 @@ export const setup = {
             modules,
             scripts,
         }).then(() => {
-            return window[`@youwol/fv-button_APIv02`]
+            return window[`@youwol/rx-button-views_APIv02`]
         })
     },
     installAuxiliaryModule: ({name, cdnClient, installParameters}:{
@@ -100,7 +100,7 @@ export const setup = {
         const parameters = installParameters || {}
         const scripts = [
             ...(parameters.scripts || []),
-            `@youwol/fv-button#0.2.0-wip~dist/@youwol/fv-button/${entry.name}.js`
+            `@youwol/rx-button-views#0.2.0-wip~dist/@youwol/rx-button-views/${entry.name}.js`
         ]
         const modules = [
             ...(parameters.modules || []),
@@ -111,7 +111,7 @@ export const setup = {
             modules,
             scripts,
         }).then(() => {
-            return window[`@youwol/fv-button/${entry.name}_APIv02`]
+            return window[`@youwol/rx-button-views/${entry.name}_APIv02`]
         })
     },
     getCdnDependencies(name?: string){

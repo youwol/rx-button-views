@@ -3,8 +3,8 @@
     "description": "Button's type of widgets using rx-vdom.",
     "version": "0.2.0-wip",
     "author": "greinisch@youwol.com",
-    "homepage": "https://github.com/youwol/fv-button#README.md",
-    "main": "dist/@youwol/fv-button.js",
+    "homepage": "https://github.com/youwol/rx-button-views#README.md",
+    "main": "dist/@youwol/rx-button-views.js",
     "types": "src/index.ts",
     "scripts": {
         "clean": "del-cli dist",
