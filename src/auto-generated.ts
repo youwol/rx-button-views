@@ -54,7 +54,7 @@ const entries = {
 export const setup = {
     name:'@youwol/rx-button-views',
         assetId:'QHlvdXdvbC9yeC1idXR0b24tdmlld3M=',
-    version:'0.2.0-wip',
+    version:'0.2.0',
     shortDescription:"Button's type of widgets using rx-vdom.",
     developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/rx-button-views&tab=doc',
     npmPackage:'https://www.npmjs.com/package/@youwol/rx-button-views',
@@ -100,7 +100,7 @@ export const setup = {
         const parameters = installParameters || {}
         const scripts = [
             ...(parameters.scripts || []),
-            `@youwol/rx-button-views#0.2.0-wip~dist/@youwol/rx-button-views/${entry.name}.js`
+            `@youwol/rx-button-views#0.2.0~dist/@youwol/rx-button-views/${entry.name}.js`
         ]
         const modules = [
             ...(parameters.modules || []),
