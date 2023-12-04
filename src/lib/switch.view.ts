@@ -1,6 +1,11 @@
 import { BehaviorSubject } from 'rxjs'
 import { distinctUntilChanged } from 'rxjs/operators'
-import { attr$, Stream$, VirtualDOM } from '@youwol/flux-view'
+import {
+    CSSAttribute,
+    AttributeLike,
+    ChildrenLike,
+    VirtualDOM,
+} from '@youwol/rx-vdom'
 
 export namespace Switch {
     export class State {
@@ -18,25 +23,15 @@ export namespace Switch {
         }
     }
 
-    export class View implements VirtualDOM {
+    export class View implements VirtualDOM<'div'> {
         static defaultClass = 'fv-switch'
         static defaultRadius = 15
 
-        static defaultInnerStyle = {
-            width: `${2 * View.defaultRadius}px`,
-            height: `${View.defaultRadius}px`,
-            position: 'relative',
-            transition: 'background-color 1s',
-            'border-radius': '50rem',
-        }
-
         public readonly state: State
-        public readonly className: string | Stream$<unknown, string>
-        public readonly style:
-            | { [k: string]: string }
-            | Stream$<unknown, { [k: string]: string }>
+        public readonly className: AttributeLike<string>
+        public readonly style: CSSAttribute
         public readonly tag = 'div'
-        public readonly children: [VirtualDOM | Stream$<unknown, VirtualDOM>]
+        public readonly children: ChildrenLike
         public readonly onclick: (ev: MouseEvent) => void
 
         constructor({
@@ -46,12 +41,8 @@ export namespace Switch {
             ...rest
         }: {
             state?: State
-            className?: (State) => string | Stream$<unknown, string>
-            style?: (
-                State,
-            ) =>
-                | { [_key: string]: string }
-                | Stream$<unknown, { [_key: string]: string }>
+            className?: (State) => AttributeLike<string>
+            style?: (State) => CSSAttribute
             [_key: string]: unknown
         } = {}) {
             Object.assign(this, rest)
@@ -66,35 +57,38 @@ export namespace Switch {
                 distinctUntilChanged(),
             )
             const radius = View.defaultRadius
-            const styleCursorBase = {
+            const styleCursorBase: CSSAttribute = {
                 transition: 'left 0.5s',
                 height: `${radius}px`,
                 width: `${radius}px`,
                 position: 'absolute',
             }
-            const innerContent = {
-                class: attr$(valueDistinct$, (value) =>
-                    value ? 'fv-bg-focus' : 'fv-bg-disabled',
-                ),
+            const innerContent: VirtualDOM<'div'> = {
+                tag: 'div',
+                class: {
+                    source$: valueDistinct$,
+                    vdomMap: (value: boolean) =>
+                        value ? 'fv-bg-focus' : 'fv-bg-disabled',
+                },
                 style: {
                     width: `${2 * radius}px`,
                     height: `${radius}px`,
                     position: 'relative',
                     transition: 'background-color 1s',
-                    'border-radius': '50rem',
+                    borderRadius: '50rem',
                 },
                 children: [
                     {
+                        tag: 'div',
                         class: 'fv-cursor fv-bg-primary fv-rounded-circle',
-                        style: attr$(
-                            valueDistinct$,
-                            (value) => ({
+                        style: {
+                            source$: valueDistinct$,
+                            vdomMap: (value) => ({
                                 left: value ? `${radius}px` : '0px',
                             }),
-                            {
-                                wrapper: (d) => ({ ...styleCursorBase, ...d }),
-                            },
-                        ),
+
+                            wrapper: (d) => ({ ...styleCursorBase, ...d }),
+                        },
                     },
                 ],
             }

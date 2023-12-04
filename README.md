@@ -1,19 +1,19 @@
-# @youwol/fv-button
+# @youwol/rx-button-views
 
-Button's type of widgets using flux-view.
+Button's type of widgets using rx-vdom.
 
 This library is part of the hybrid cloud/local ecosystem
 [YouWol](https://platform.youwol.com/applications/@youwol/platform/latest).
 
 ## Links
 
-[Online user-guide](https://l.youwol.com/doc/@youwol/fv-button)
+<!-- no user guide provided -->
 
-[Developers documentation](https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/fv-button)
+[Developers documentation](https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/rx-button-views&tab=doc)
 
-[Package on npm](https://www.npmjs.com/package/@youwol/fv-button)
+[Package on npm](https://www.npmjs.com/package/@youwol/rx-button-views)
 
-[Source on GitHub](https://github.com/youwol/fv-button)
+[Source on GitHub](https://github.com/youwol/rx-button-views)
 
 # Installation, Build, Test
 
@@ -38,6 +38,8 @@ yarn build:prod
 ```
 
 ---
+
+<!-- no specific test configuration documented -->
 
 To run tests:
 

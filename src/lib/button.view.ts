@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs'
-import { Stream$, VirtualDOM } from '@youwol/flux-view'
+import { ChildLike, ChildrenLike, VirtualDOM } from '@youwol/rx-vdom'
 
 export namespace Button {
     export class State {
@@ -9,16 +9,18 @@ export namespace Button {
     }
 
     export function simpleTextButton(text: string) {
-        return new View({ contentView: () => ({ innerText: text }) })
+        return new View({
+            contentView: () => ({ tag: 'div', innerText: text }),
+        })
     }
 
-    export class View implements VirtualDOM {
+    export class View implements VirtualDOM<'button'> {
         static defaultClass = 'fv-btn fv-btn-primary'
         public readonly class: string
         public readonly state: State
         public readonly tag = 'button'
         public readonly type = 'button'
-        public readonly children: [VirtualDOM | Stream$<unknown, VirtualDOM>]
+        public readonly children: ChildrenLike
         public readonly onclick: (ev: MouseEvent) => void
 
         constructor({
@@ -27,7 +29,7 @@ export namespace Button {
             ...rest
         }: {
             state?: State
-            contentView: (State) => VirtualDOM | Stream$<unknown, VirtualDOM>
+            contentView: (State) => ChildLike
             [_key: string]: unknown
         }) {
             Object.assign(this, rest)
