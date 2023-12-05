@@ -1,7 +1,7 @@
 {
     "name": "@youwol/rx-button-views",
     "description": "Button's type of widgets using rx-vdom.",
-    "version": "0.2.0-wip",
+    "version": "0.2.1-wip",
     "author": "greinisch@youwol.com",
     "homepage": "https://github.com/youwol/rx-button-views#README.md",
     "main": "dist/@youwol/rx-button-views.js",
